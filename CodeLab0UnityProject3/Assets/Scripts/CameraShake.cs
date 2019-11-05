@@ -55,9 +55,4 @@ public class CameraShake : MonoBehaviour
         // Causes the shaking to decrement over time
         stress = Mathf.Clamp01(stress - recoverySpeed * Time.deltaTime);
     }
-
-    public void CallShake(float amt)
-    {
-        stress = Mathf.Clamp01(stress + amt);
-    }
 }
