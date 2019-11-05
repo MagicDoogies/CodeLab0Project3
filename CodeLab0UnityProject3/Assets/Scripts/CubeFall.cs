@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CubeFall : MonoBehaviour
 {
@@ -31,9 +32,17 @@ public class CubeFall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Check if colliding with the ground plane, and if so, enable Camera Shake
         if (collision.gameObject.tag == "Ground")
         {
             mainCamera.GetComponent<CameraShake>().enabled = true;
+            Invoke("ReloadScene", 1.25f);
         }
+    }
+
+    // Reload the scene after a little bit of time
+    private void ReloadScene()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 }
